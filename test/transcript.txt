@@ -1,0 +1,115 @@
+--------------------------------------- 1st -----------------------------------------
+[pntsoi@ieng6-201]:adder:410$ cat ./test/test6.snek
+(sub1 0)
+[pntsoi@ieng6-201]:adder:411$ make ./test/test6.run
+cargo run -- test/test6.snek test/test6.s
+warning: function `compile` is never used
+  --> src/main.rs:14:4
+   |
+14 | fn compile(program: String) -> String {
+   |    ^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `adder` (bin "adder") generated 1 warning
+    Finished dev [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/adder test/test6.snek test/test6.s`
+nasm -f elf64 test/test6.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/test6.run
+rm test/test6.s
+[pntsoi@ieng6-201]:adder:412$ ./test/test6.run
+-1
+
+---------------------------------------- 2nd -------------------------------------------------
+[pntsoi@ieng6-201]:adder:413$ cat ./test/test10.snek
+(negate (sub1 (add1 (negate 8))))
+[pntsoi@ieng6-201]:adder:414$ make ./test/test10.run
+cargo run -- test/test10.snek test/test10.s
+warning: function `compile` is never used
+  --> src/main.rs:14:4
+   |
+14 | fn compile(program: String) -> String {
+   |    ^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `adder` (bin "adder") generated 1 warning
+    Finished dev [unoptimized + debuginfo] target(s) in 0.04s
+     Running `target/debug/adder test/test10.snek test/test10.s`
+nasm -f elf64 test/test10.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/test10.run
+rm test/test10.s
+[pntsoi@ieng6-201]:adder:415$ ./test/test10.run
+8
+
+------------------------------------------------- 3rd -------------------------------------------
+[pntsoi@ieng6-201]:adder:417$ cat ./test/test11.snek
+(negate -10)
+[pntsoi@ieng6-201]:adder:418$ make ./test/test11.run
+cargo run -- test/test11.snek test/test11.s
+warning: function `compile` is never used
+  --> src/main.rs:14:4
+   |
+14 | fn compile(program: String) -> String {
+   |    ^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `adder` (bin "adder") generated 1 warning
+    Finished dev [unoptimized + debuginfo] target(s) in 0.03s
+     Running `target/debug/adder test/test11.snek test/test11.s`
+nasm -f elf64 test/test11.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/test11.run
+rm test/test11.s
+[pntsoi@ieng6-201]:adder:419$ ./test/test11.run
+10
+
+---------------------------------------------- 4th -----------------------------------------------
+[pntsoi@ieng6-201]:adder:420$ cat ./test/test9.snek
+(negate (negate (negate 1)))
+
+[pntsoi@ieng6-201]:adder:421$ make ./test/test9.run
+cargo run -- test/test9.snek test/test9.s
+warning: function `compile` is never used
+  --> src/main.rs:14:4
+   |
+14 | fn compile(program: String) -> String {
+   |    ^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `adder` (bin "adder") generated 1 warning
+    Finished dev [unoptimized + debuginfo] target(s) in 0.02s
+     Running `target/debug/adder test/test9.snek test/test9.s`
+nasm -f elf64 test/test9.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/test9.run
+rm test/test9.s
+[pntsoi@ieng6-201]:adder:422$ ./test/test9.run
+-1
+--------------------------------------------- 5th --------------------------------------
+[pntsoi@ieng6-201]:adder:423$ cat ./test/test1.snek
+(add1 (add1 (add1 (add1 (sub1 0)))))
+[pntsoi@ieng6-201]:adder:424$ make ./test/test1.run
+cargo run -- test/test1.snek test/test1.s
+warning: function `compile` is never used
+  --> src/main.rs:14:4
+   |
+14 | fn compile(program: String) -> String {
+   |    ^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `adder` (bin "adder") generated 1 warning
+    Finished dev [unoptimized + debuginfo] target(s) in 0.03s
+     Running `target/debug/adder test/test1.snek test/test1.s`
+nasm -f elf64 test/test1.s -o runtime/our_code.o
+ar rcs runtime/libour_code.a runtime/our_code.o
+rustc -L runtime/ runtime/start.rs -o test/test1.run
+rm test/test1.s
+[pntsoi@ieng6-201]:adder:425$ ./test/test1.run
+3
+-----------------------------------------------------------------------

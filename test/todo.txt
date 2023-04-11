@@ -1,0 +1,58 @@
+
+test1: crossing negative and positive
+(add1 (add1 (add1 (add1 (sub1 0)))))
+
+expect: 3
+
+test2: spaces before command
+    (add1 (add1 (sub1 (73))))
+
+expect: panic 'parse error'
+
+test3: syntax error in code
+(addl (add1 1))
+
+expect: panic 'parse error'
+
+test4: spaces after code
+(add1 (add1 1))    
+
+expect: 3 
+
+test5: spaces in between commands
+(add1  (add1   (sub1    (5)   )   )   )
+
+expect: panic
+
+test6: negative number
+(sub1 0)
+
+expect: -1
+
+test7: maximum long size
+(add1 9223372036854775807)
+
+expect: panic
+
+test8: negating 0
+(negate 0)
+
+expect: 0
+
+test9: negate negate negate
+(negate (negate (negate 1)))
+
+expect: -1
+
+test10: negate sub add negate
+(negate (sub1 (add1 (negate 8))))
+
+expect: 8
+
+test11: negate a negative number
+(negate -10)
+
+expect: 10
+
+
+
